@@ -232,4 +232,53 @@ form .form-group label {
     padding: 2px 15px;
 }
 
+.articles-description {
+    margin-top: 45px;
+}
 
+.articles-description li {
+    line-height: 35pt;
+}
+
+.articles-description li .arrow {
+    display: inline-block;
+    height: 13px;
+    width: 20px;
+    margin-left: 5px;
+    position: relative;
+    transition: ease .2s all;
+}
+
+.articles-description li .arrow:hover {
+    margin-left: 12px;
+}
+
+.articles-description li .arrow-left {
+    height: 2px;
+    background-color: #fff;
+    margin-top: 5px;
+    border-radius: 3px;
+
+}
+
+.articles-description li .arrow-right-top {
+    background-color: #fff;
+    height: 2px;
+    width: 40%;
+    border-radius: 1px;
+    position: absolute;
+    transform: rotate(45deg);
+    top: 2px;
+    right: -1px;
+}
+
+.articles-description li .arrow-right-bot {
+    background-color: #fff;
+    height: 2px;
+    width: 40%;
+    border-radius: 1px;
+    position: absolute;
+    transform: rotate(-45deg);
+    bottom: 4px;
+    right: -1px;
+}
