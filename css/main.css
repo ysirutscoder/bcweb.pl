@@ -55,6 +55,7 @@ nav {
     display: flex;
     padding: 5px;
     background-color: #fff;
+    font-size: 14px;
 }
 
 .search-input {
@@ -62,6 +63,8 @@ nav {
     border: none;
     border-radius: 4px;
     margin-right: 1px;
+    padding-left: 10px;
+    font-size: 12px;
 }
 
 .search-submit {
@@ -69,7 +72,8 @@ nav {
     border: none;
     border-radius: 4px;
     color: #fff;
-    padding: 3px 5px;
+    padding: 3px 10px;
+    font-weight: 500;
 }
 
 .arrow_box {
@@ -89,7 +93,7 @@ nav {
     border-color: rgba(255, 255, 255, 0);
     border-bottom-color: #fff;
     border-width: 11px;
-    margin-left: 204px;
+    margin-left: 185px;
 }
 
 .hamburger span {
@@ -308,7 +312,7 @@ form .form-group label {
 }
 
 .articles-description li .arrow:hover {
-    margin-left: 12px;
+    margin-left: 10px;
 }
 
 .articles-description li .arrow-left {
