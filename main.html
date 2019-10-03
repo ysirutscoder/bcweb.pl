@@ -61,6 +61,7 @@
 
                 </div>
                 <div class="col-8 content-description">
+                    <transition name="fade">
                     <div v-if="state===1">
                         <h2>Oferta</h2>
                         <hr>
@@ -89,8 +90,51 @@
                             <div class="card-container">Copywriting</div>
                         </div>
                     </div>
+                    <div v-else-if="state===3" class="contact">
+                        <h2>Kontakt</h2>
+                        <hr>
+                        <h3>Wyślij nam wiadomość</h3>
+                        <form>
+                            <div class="form-group row">
+                                <label for="inputNameAndSurname" class="col-sm-3 col-form-label">Imię i nazwisko*</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="inputNameAndSurname" v-model="form.name" >
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="inputPassword" class="col-sm-3 col-form-label" >Adres email*</label>
+                                <div class="col-sm-9">
+                                    <input type="password" class="form-control" id="inputPassword" v-model="form.password">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="inputContent" class="col-sm-3 col-form-label">Treść</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="inputContent" v-model="form.content">
+                                </div>
+                            </div>
+                        </form>
+                        <div class="row">
+                            <div class="col-8">
+                                <div class="private-control">
+                                    <input type="checkbox" class="private-checkbox">
+                                    <span class="checkbox-custom"></span>
+                                    <div class="private-text">Wyrażam zgodę na otrzymywanie od Volkswagen Group Polska sp. z o.o. z siedzibą w Poznaniu informacji handlowych za pośrednictwem środków komunikacji elektronicznej.</div>
+                                </div>
+                                <div class="private-control">
+                                    <input type="checkbox" class="private-checkbox">
+                                    <span class="checkbox-custom-1"></span>
+                                    <div class="private-text">Wyrażam zgodę na przetwarzanie moich danych osobowych przez Volkswagen Group Polska sp. z o.o. z siedzibą w Poznaniu w celach marketingowych.</div>
+                                </div>
+                            </div>
+                            <div class="col-4 ">
+                                <button class="form-button">WYŚLIJ</button>
+                            </div>
+                        </div>
+                        </div>
+                    </transition>
+                    </div>
                 </div>
-
             </div>
         </div>
     </div>

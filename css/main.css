@@ -1,3 +1,7 @@
+* {
+    outline: none;
+}
+
 main {
     background-image: url("../img/background.png");
     background-position: center;
@@ -11,6 +15,14 @@ nav {
     display:flex !important;
     justify-content: space-between;
     z-index: 10;
+}
+
+.fade-enter-active, .fade-leave-active {
+    transition: opacity .7s;
+}
+
+.fade-enter, .fade-leave-to {
+     opacity:0;
 }
 
 .nav-items {
@@ -145,7 +157,79 @@ hr {
     margin:10px;
     height:170px;
     border:2px solid #38a4f9;
+    transition: all 0.5s ease;
+}
 
+.card-container:hover {
+    background-color: #49b0ff ;
+    opacity: 0.9;
+}
+
+form .form-group input {
+    background-color: transparent ;
+    border:2px solid #38a4f9 ;
+    border-radius:0 ;
+    padding: 1.2rem .75rem;
+}
+
+form .form-group label {
+    font-weight: 200;
+    font-size: 14px;
+}
+
+.contact h3 {
+    margin-top:5%;
+    margin-bottom:20px;
+    font-weight: 400;
+}
+
+.private-control {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+}
+
+.private-text {
+    font-weight: 100;
+    font-size: 10px;
+    color:#fff;
+    padding-left: 10px;
+    padding-bottom: 10px;
+}
+
+.private-checkbox {
+    opacity: 0;
+}
+
+.checkbox-custom {
+    position:absolute;
+    top:10px;
+    left:15px;
+    height:15px;
+    width:15px;
+    background-color: transparent;
+    border-radius: 2px;
+    border:1px solid white;
+}
+.checkbox-custom-1{
+    position:absolute;
+    top:60px;
+    left:15px;
+    height:15px;
+    width:15px;
+    background-color: transparent;
+    border-radius: 2px;
+    border:1px solid white;
+}
+
+.form-button {
+    margin-left:150px;
+    background-color: #49b0ff;
+    color:#fff;
+    border:#49b0ff;
+    border-radius:5px;
+    font-size: 12px;
+    padding: 2px 15px;
 }
 
 
