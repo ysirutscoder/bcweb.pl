@@ -46,13 +46,50 @@ nav {
 .search-form-2 {
     position: absolute;
     display: none;
-    top: 25px;
-    right: 50px;
+    top: 43px;
+    right: 35px;
     background-color: #fff;
 }
 
 .search-form-wrapper {
     display: flex;
+    padding: 5px;
+    background-color: #fff;
+}
+
+.search-input {
+    background-color: rgb(235, 231, 231);
+    border: none;
+    border-radius: 4px;
+    margin-right: 1px;
+}
+
+.search-submit {
+    background-color: #48a2eb;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    padding: 3px 5px;
+}
+
+.arrow_box {
+    position: relative;
+    background: #fff;
+}
+
+.arrow_box:after {
+    bottom: 100%;
+    left: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-color: rgba(255, 255, 255, 0);
+    border-bottom-color: #fff;
+    border-width: 11px;
+    margin-left: 204px;
 }
 
 .hamburger span {
