@@ -20,6 +20,10 @@ $(document).ready(function () {
         $('main').toggle();
         $(".sidebar-menu").toggle();
     });
+    $('.search-button').click(function() {
+        $('.search-form-1').toggle();
+        $('.search-form-2').toggle();
+    })
 });
 
 
