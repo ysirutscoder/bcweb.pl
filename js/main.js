@@ -36,6 +36,10 @@ $(document).ready(function () {
     $('#search2').click(function () {
         $('.modal2').toggle();
     });
+    $('.search-button').click(function() {
+        $('.search-form-1').toggle();
+        $('.search-form-2').toggle();
+    })
 });
 
 
