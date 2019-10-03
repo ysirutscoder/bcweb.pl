@@ -7,6 +7,10 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <body>
 <main>
@@ -14,7 +18,15 @@
         <nav>
             <div class="nav-logo"><img src="img/logo.svg" alt="main logo item"></div>
             <div class="nav-items">
-                <div class="col-6"><img src="img/search-13-32.png" alt="search icon"></div>
+                <div class="col-6" >
+                    <img src="img/search-13-32.png" id="search2" alt="search icon">
+                    <div class="modal2">
+                        <form class="form-inline row">
+                            <input class="form-control " type="search"  aria-label="Search">
+                            <button class="btn btn-info " type="submit">DALEJ</button>
+                        </form>
+                    </div>
+                </div>
                 <div class="col-6">
                     <div class="hamburger">
                         <span></span>
@@ -37,7 +49,15 @@
         <nav>
             <div class="nav-logo"><img src="img/logo.svg" alt="main logo item"></div>
             <div class="nav-items">
-                <div class="col-6"><img src="img/search-13-32.png" alt="search icon"></div>
+                <div class="col-6" >
+                    <img src="img/search-13-32.png" id="search1" alt="search icon">
+                    <div class="modal1">
+                        <form class="form-inline row">
+                            <input class="form-control " type="search"  aria-label="Search">
+                            <button class="btn btn-info " type="submit">DALEJ</button>
+                        </form>
+                    </div>
+                </div>
                 <div class="col-6">
                     <div class="hamburger">
                         <span></span>
@@ -142,8 +162,13 @@
                     <div v-else-if="state===3" class="contact">
                         <h2>Kontakt</h2>
                         <hr>
-                        <h3>Wyślij nam wiadomość</h3>
-                        <form>
+                        <h3 v-if="!sent">Wyślij nam wiadomość</h3>
+                        <transition name="fade" mode="out-in">
+                        <div v-if="sent" class="thank-you">
+                            <h2>THANK YOU</h2>
+                        </div>
+                        </transition>
+                        <form v-if="!sent">
                             <div class="form-group row">
                                 <label for="inputNameAndSurname" class="col-sm-3 col-form-label">Imię i nazwisko*</label>
                                 <div class="col-sm-9">
@@ -151,9 +176,9 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="inputPassword" class="col-sm-3 col-form-label" >Adres email*</label>
+                                <label for="inputMail" class="col-sm-3 col-form-label" >Adres email*</label>
                                 <div class="col-sm-9">
-                                    <input type="password" class="form-control" id="inputPassword" v-model="form.password">
+                                    <input type="email" class="form-control" id="inputMail" v-model="form.mail">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -163,21 +188,19 @@
                                 </div>
                             </div>
                         </form>
-                        <div class="row">
-                            <div class="col-8">
+                        <div class="row" v-if="!sent">
+                            <div class="col-8" >
                                 <div class="private-control">
-                                    <input type="checkbox" class="private-checkbox">
-                                    <span class="checkbox-custom"></span>
-                                    <div class="private-text">Wyrażam zgodę na otrzymywanie od Volkswagen Group Polska sp. z o.o. z siedzibą w Poznaniu informacji handlowych za pośrednictwem środków komunikacji elektronicznej.</div>
+                                    <input id="type1" type="checkbox">
+                                    <label for="type1" class="private-text">Wyrażam zgodę na otrzymywanie od Volkswagen Group Polska sp. z o.o. z siedzibą w Poznaniu informacji handlowych za pośrednictwem środków komunikacji elektronicznej.</label>
                                 </div>
                                 <div class="private-control">
-                                    <input type="checkbox" class="private-checkbox">
-                                    <span class="checkbox-custom-1"></span>
-                                    <div class="private-text">Wyrażam zgodę na przetwarzanie moich danych osobowych przez Volkswagen Group Polska sp. z o.o. z siedzibą w Poznaniu w celach marketingowych.</div>
+                                    <input id="type2" type="checkbox">
+                                    <label for="type2" class="private-text">Wyrażam zgodę na przetwarzanie moich danych osobowych przez Volkswagen Group Polska sp. z o.o. z siedzibą w Poznaniu w celach marketingowych.</label>
                                 </div>
                             </div>
                             <div class="col-4 ">
-                                <button class="form-button">WYŚLIJ</button>
+                                <button class="form-button" @click="sendRequest">WYŚLIJ</button>
                             </div>
                         </div>
                         </div>
@@ -189,16 +212,13 @@
     </div>
 
 </div>
-
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
+<script src="js/main.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-<script src="js/main.js"></script>
+
 </body>
 </html>
